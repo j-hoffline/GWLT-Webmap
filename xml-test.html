@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.parseXML demo</title>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+
+<p id="someElement"></p>
+<p id="anotherElement"></p>
+<p id="andanother"><p>
+
+<script>
+
+//script for reading xml file from https://code.tutsplus.com/tutorials/quick-tip-use-jquery-to-retrieve-data-from-an-xml-file--net-390
+$(document).ready(function()
+  {
+    $.get('test.xml', function(d){
+    $('body').append('<h1> Recommended Web Development Books </h1>');
+    $('body').append('<dl />');
+
+    $(d).find('book').each(function(){
+
+        var $book = $(this);
+        var title = $book.attr("title");
+        var description = $book.find('description').text();
+        var imageurl = $book.attr('imageurl');
+
+        var html = '<dt> <img class="bookImage" alt="" src="' + imageurl + '" /> </dt>';
+        html += '<dd> <span class="loadingPic" alt="Loading" />';
+        html += '<p class="title">' + title + '</p>';
+        html += '<p> ' + description + '</p>' ;
+        html += '</dd>';
+
+        $('dl').append($(html));
+
+        $('.loadingPic').fadeOut(1400);
+    });
+});
+});
+
+//script for parsing xml from https://api.jquery.com/jquery.parsexml/
+var xml = "<rss version='2.0'><channel><title>RSS Title</title></channel></rss>",
+  xmlDoc = $.parseXML( xml ),
+  $xml = $( xmlDoc ),
+  $title = $xml.find( "title" );
+
+// Append "RSS Title" to #someElement
+$( "#someElement" ).append( $title.text() );
+
+// Change the title to "XML Title"
+$title.text( "XML Title" );
+
+// Append "XML Title" to #anotherElement
+$( "#anotherElement" ).append( $title.text() );
+</script>
+
+</body>
+</html>

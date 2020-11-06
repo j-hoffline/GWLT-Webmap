@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>GWLT Webmap</title>
+  <!-- Add Mapbox GL JS JavaScript file -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+
+  <!-- Add in the Mapbox GL JS CSS file -->
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'></link>
+
+  <!-- Add CSS styling info for the map -->
+  <style type="text/css">
+  </style>
+
+  <!-- Adding styling info for page layout by reading in a CSS file -->
+  <link rel="stylesheet" href="styles.css"></link>
+
+</head>
+
+<body>
+  <img id='logo-gwlt' src="Images/Logo-GWLT.jpg" alt="Logo - Greater Worcester Land Trust" width="90px">
+  <h1 id='title'>Trails of The Greater Worcester Land Trust<br>Webmap, V1 by A.Hostetler</h1>
+  <br>
+
+  <!-- Add a div to give the map somewhere to go -->
+  <div id='map'></div>
+  <div class='map-overlay' id='features'><h2>GWLT Trails</h2><div id='pd'><p>Hover over a trail!</p></div></div>
+  <div class='map-overlay' id='legend'></div>
+
+<script>
+  // Add Mapbox access token
+  mapboxgl.accessToken = 'pk.eyJ1IjoiYW1hcHBlciIsImEiOiJnZ0FDZWJrIn0.9Vck8ZXqJsSYGAYhKwLsWA';
+
+  // Create a variable called "map" to house your map
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/amapper/ckh5fpr0209oi19r22iw4ftlb'
+  });
+
+  // Once map is loaded
+  map.on('load', function() {
+    // Add a legend
+    var layers = ['Red Square', 'Red Triangle', 'Blue Square', 'Yellow Triangle', 'White Triangle'];
+    var colors = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A'];
+    for (i = 0; i < layers.length; i++) {
+      var layer = layers[i];
+      var color = colors[i];
+      var item = document.createElement('div');
+      var key = document.createElement('span');
+      key.className = 'legend-key';
+      key.style.backgroundColor = color;
+
+      var value = document.createElement('span');
+      value.innerHTML = layer;
+      item.appendChild(key);
+      item.appendChild(value);
+      legend.appendChild(item);
+    };
+
+    /* Add mouse over action */
+    map.on('mousemove', function(e) {
+      var trails = map.queryRenderedFeatures(e.point, {
+        layers: ['TetassetRidge-Trails']
+      });
+
+      if (trails.length > 0) {
+        document.getElementById('pd').innerHTML = '<h3><strong>' + trails[0].properties.Trail + '</strong></h3><p><strong><em>' + trails[0].properties.Trail + '</strong> FILLER </em></p>';
+      } else {
+        document.getElementById('pd').innerHTML = '<p>Hover over a trail!</p>';
+      }
+    });
+  });
+
+  map.getCanvas().style.cursor = 'default';
+
+  </script>
+
+</body>
+
+</html>

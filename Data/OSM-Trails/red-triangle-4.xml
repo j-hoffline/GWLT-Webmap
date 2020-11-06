@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="CGImap 0.8.3 (3880855 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <way id="657182639" visible="true" version="1" changeset="65710878" timestamp="2018-12-23T09:55:30Z" user="RickieFareShowe18" uid="4630830">
+  <nd ref="6155421034"/>
+  <nd ref="6155421040"/>
+  <nd ref="6155421041"/>
+  <nd ref="6155421042"/>
+  <nd ref="6155421043"/>
+  <nd ref="6155421044"/>
+  <nd ref="6155421045"/>
+  <nd ref="6155421046"/>
+  <nd ref="6155421047"/>
+  <nd ref="4662025286"/>
+  <nd ref="6155421048"/>
+  <nd ref="74573719"/>
+  <tag k="highway" v="footway"/>
+ </way>
+</osm>

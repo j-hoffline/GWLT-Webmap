@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Studio Three</title>
+  <!-- Add Mapbox GL JS JavaScript file -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+
+  <!-- Add in the Mapbox GL JS CSS file -->
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet'></link>
+
+  <!-- Add CSS styling info for the map -->
+  <style type="text/css">
+  </style>
+  <!-- Adding styling info for page layout by reading in a CSS file -->
+  <link rel="stylesheet" href="styles.css"></link>
+
+</head>
+
+<body>
+  <h1>Studio Week 3 <br> Choropleth Map with Mapbox </h1>
+  <!-- Add multiple pages to web page-->
+  <!-- active class displays the grey box around current page-->
+  <ul>
+  	<li><a class="active" href="index.html" target="_self">Output 1</a></li>
+    <li><a href="mapbox-interaction.html" target="_self">Output 2</a></li>
+    <li><a href="mapbox-turfjs.html" target="_self">Output 3</a></li>
+  </ul>
+  <br>
+
+
+  <!-- Add a div to give the map somewhere to go -->
+  <div id='map'></div>
+  <div class='map-overlay' id='features'><h2>US population density</h2><div id='pd'><p>Hover over a state!</p></div></div>
+  <div class='map-overlay' id='legend'></div>
+
+  <script>
+    /* Add your access token*/
+      mapboxgl.accessToken = 'pk.eyJ1IjoiYW1hcHBlciIsImEiOiJnZ0FDZWJrIn0.9Vck8ZXqJsSYGAYhKwLsWA';
+
+    /* Create a variable called "map" to house your map*/
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/amapper/ckgjkgrev0auz19rtneidzwhy'
+      });
+
+      map.on('load', function() {
+        /* Add a legend*/
+        var layers = ['0-10', '10-20', '20-50', '50-100', '100-200', '200-500', '500-1000', '1000+'];
+        var colors = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026'];
+        for (i = 0; i < layers.length; i++) {
+          var layer = layers[i];
+          var color = colors[i];
+          var item = document.createElement('div');
+          var key = document.createElement('span');
+          key.className = 'legend-key';
+          key.style.backgroundColor = color;
+
+          var value = document.createElement('span');
+          value.innerHTML = layer;
+          item.appendChild(key);
+          item.appendChild(value);
+          legend.appendChild(item);
+        };
+
+        /* Add mouse over action */
+        map.on('mousemove', function(e) {
+          var states = map.queryRenderedFeatures(e.point, {
+            layers: ['statedata']
+          });
+
+          if (states.length > 0) {
+            document.getElementById('pd').innerHTML = '<h3><strong>' + states[0].properties.name + '</strong></h3><p><strong><em>' + states[0].properties.density + '</strong> people per square mile</em></p>';
+          } else {
+            document.getElementById('pd').innerHTML = '<p>Hover over a state!</p>';
+          }
+        });
+
+      })  ;
+
+
+
+      map.getCanvas().style.cursor = 'default';
+
+      map.getCanvas().style.cursor = 'default';
+
+  </script>
+</body>
+
+</html>
