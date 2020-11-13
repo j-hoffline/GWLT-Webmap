@@ -51,18 +51,18 @@
 
 // Add trails to map from geojson
 //Could not add data from folder, had to use URL. Not sure why.
-  $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Trails_11_10_20.geojson",function(trailData){
-    L.geoJson(trailData).addTo(map);
+  var trails = $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Trails_11_10_20.geojson",function(data){
+    L.geoJson(data).addTo(map);
   });
 
 //Add challenge routes to map from geoJSON
-  $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Challenge_Routes.geojson",function(challengeRoutes){
-    L.geoJson(challengeRoutes).addTo(map);
+  var challenge = $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Challenge_Routes.geojson",function(data){
+    L.geoJson(data).addTo(map);
   });
 
 //Add trailheads to map from geoJSON
-$.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Trailheads.geojson",function(trailHeads){
-  L.geoJson(trailHeads,{
+var trailhead_points = $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Trailheads.geojson",function(data){
+  L.geoJson(data,{
     pointToLayer: function(feature,latlng){
 	  return L.marker(latlng);
     }
