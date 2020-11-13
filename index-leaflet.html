@@ -56,11 +56,13 @@
   });
 
 //Add challenge routes to map from geoJSON
-
+  $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Challenge_Routes.geojson",function(challengeRoutes){
+    L.geoJson(challengeRoutes).addTo(map);
+  });
 
 //Add trailheads to map from geoJSON
-$.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Trailheads.geojson",function(data){
-  L.geoJson(data,{
+$.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Trailheads.geojson",function(trailHeads){
+  L.geoJson(trailHeads,{
     pointToLayer: function(feature,latlng){
 	  return L.marker(latlng);
     }
