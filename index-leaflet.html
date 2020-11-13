@@ -49,18 +49,23 @@
       minZoom: 9
     }).addTo(map);
 
-//This worked! -- Add polyline following tutorial http://bl.ocks.org/d3noob/7688787
-  var coords = [[42.264, -72],[42.264, -71]]
-
-  var lineStyle = {color: 'red', weight: 10, opacity: .7, dashArray: '20,15', lineJoin: 'round'};
-
-  var polyline = L.polyline(coords,lineStyle).addTo(map);
-
-
-// Trying to add line following Studio week 4 tutorial http://maptimeboston.github.io/leaflet-intro/
-  $.getJSON("Data\Tetasset_Ridge_Trails_11_10_20.geojson",function(trailData){
-    L.geoJson( trailData ).addTo(map);
+// Add trails to map from geojson
+//Could not add data from folder, had to use URL. Not sure why.
+  $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Trails_11_10_20.geojson",function(trailData){
+    L.geoJson(trailData).addTo(map);
   });
+
+//Add challenge routes to map from geoJSON
+
+
+//Add trailheads to map from geoJSON
+$.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Trailheads.geojson",function(data){
+  L.geoJson(data,{
+    pointToLayer: function(feature,latlng){
+	  return L.marker(latlng);
+    }
+  }).addTo(map);
+});
 
 
 /*
