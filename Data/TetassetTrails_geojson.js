@@ -1,4 +1,4 @@
-{
+var tetassetTrails = {
   "type": "FeatureCollection",
   "crs": {
     "type": "name",
