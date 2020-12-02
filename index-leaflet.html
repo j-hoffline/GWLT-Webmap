@@ -68,7 +68,7 @@
     border-radius: 10px
   }
   .info-text {
-    padding:10px 20px 30px 50px;
+    padding: 10% 4% 4% 5%;
     font-size: 20px;
     color: black;
   }
@@ -82,7 +82,6 @@
    color: white;
    width: 100%;
   }
-
   li {
    float: left;
    margin-right: 5px;
@@ -92,7 +91,6 @@
    width: 30.9%;
    border-radius: 10px;
   }
-
   /* Add a border to all( but not the last) list items */
   li:last-child {
    border-right: none;
@@ -107,7 +105,6 @@
    font-family: Arial, Helvetica, sans-serif;
    text-align: center;
   }
-
   /* Links will change color when hovered over */
   li a:hover {
    background-color: #3E7517;
@@ -149,14 +146,14 @@
     <div class="info-div">
       <div class="tabs">
         <ul>
-          <li><a class = "active" href="index-leaflet.html">Hiking Map</a></li>
-          <li><a href="challenge.html">The Challenge</a></li>
-          <li><a href="getinvolved.html">Get Involved</a></li>
+          <li id="home"><a class = "active" href="index-leaflet.html">Hiking Map</a></li>
+          <li id="challenge"><a href="challenge.html">The Challenge</a></li>
+          <li id="getinvolved"><a href="getinvolved.html">Get Involved</a></li>
         </ul>
       </div>
 
-      <p class="info-text">
-
+      <p class="info-text" id="info-text">
+        Text will include details about the map
       <p>
       <button> <a href='http://www.gwlt.org/our-mission/' target="_blank">Learn More: Our Mission</a></button>
       <br/>
@@ -211,7 +208,13 @@ var trailhead_points = $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Da
   }).addTo(map);
 });
 
-//Display info in sidebar
+//Starting to explore changing details in side panel instead of in map panel
+var home = document.getElementById("home")
+var challenge = document.getElementById("challenge")
+var getinvolved = document.getElementById("getinvolved")
+var infotext = document.getElementById("info-text")
+
+
 
 
 
