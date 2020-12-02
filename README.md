@@ -20,9 +20,13 @@ Though this existing tool is useful for an initial exploration of available reso
 ## The Tools
 An initial draft of this concept was developed using the Web Map application from ArcGIS Online. This was only done as an initial, conceptual step due to the high expense of the platform and its associated ESRI suite of tools. Although the Greater Worcester Land Trust does have an ESRI account, this is not a future certainty. 
 
-[Hike Worcester - ArcGIS Online Web Map](https://clarku.maps.arcgis.com/apps/webappviewer/index.html?id=860fdb447ec34e9a8a18fb74bf2e6c53)
+### [Hike Worcester - ArcGIS Online Web Map](https://clarku.maps.arcgis.com/apps/webappviewer/index.html?id=860fdb447ec34e9a8a18fb74bf2e6c53)
+![ArcGIS Online Hike Worcester Web Map](/Images/AGOL_Hike_Worcester_WebMap.PNG)
 
 An opensource version of this web map was developed using front-end web development tools and FOSS (Free and Open Source Software) libraries including Leaflet.JS and JQuery.JS. This approach allows for a more cost effective solution than using ArcGIS Online. It does however, require a greater degree of subject knowledge to develop this tool. For that reason this tool’s styling and functionality currently falls short of that demonstrated in the ArcGIS Online Web Map.
+
+### [Hike Worcester - Leaflet.JS Web Map](https://theahostetler.github.io/GWLT-Webmap/index-leaflet.html)
+![Hike Worcester Web Map](/Images/Leaflet_Hike_Worcester_WebMap.PNG)
 
 ## The Data
 In order to develop an initial version of this web map it was decided that only a subset of trails would be included as a proof of concept. The Tetasset Hills trail network, located in the Eastern half of Worcester made for a good case study. This network of trails has a number of trail heads, multiple linked trails, and 2 different “Challenge” routes. The author of the project is also very familiar with these trails and enjoys reminiscing about past adventures while working.
