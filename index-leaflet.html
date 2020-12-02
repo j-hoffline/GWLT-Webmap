@@ -45,10 +45,10 @@
             on the "<a href='http://www.gwlt.org/hikeworcester/#hikeworcwinners'>Roll of Members</a>"! Beyond being eternally
             enshrined in this honorable roll, you'll get to know these amazing wild spaces, right in our urban backyard </h3><hr>
         <h2>Using This Map</h2>
-        <h4>Trails and trailheads are displayed on the map at the right. Click on a trail or trailhead to display a popup with more information about each.
+        <p>Trails and trailheads are displayed on the map at the right. Click on a trail or trailhead to display a popup with more information about each.
           <br><br>Use the “+” and “-” in the top left hand corner of the map to zoom in and out of the map.
           <br><br>Explore the area around the trails by clicking on the map and dragging your cursor around.
-        </h4> <hr>
+        </p> <hr>
           <h2>The Challenge Trails</h2>
           <h4><i>Click for a printable map</i></h4>
           <a href="https://i0.wp.com/www.gwlt.org/wp-content/uploads/2020/05/6-God_s-Acre.png">God’s Acre and Tetasset Ridge</a>
@@ -82,6 +82,8 @@
       minZoom: 9
     }).addTo(map);
 
+  L.control.scale().addTo(map);
+
 // Add function to bind popups to each line features - idealy this would be run for each of these imports
 function onEachFeature(feature, layer) {
         layer.bindPopup(feature.properties.name);
@@ -91,26 +93,28 @@ function onEachFeature(feature, layer) {
 //Could not add data from folder, had to use URL. Not sure why.
   var trails = $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Trails_11_10_20.geojson",function(data){
     L.geoJson(data,{
-      onEachFeature: onEachFeature;
+      onEachFeature: onEachFeature, color:"green", weight: 5, dashArray: "5,10"
     }).addTo(map);
   });
 
 //Add challenge routes to map from geoJSON
   var challenge = $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Challenge_Routes.geojson",function(data){
     L.geoJson(data,{
-      onEachFeature: onEachFeature
+      onEachFeature: onEachFeature, color: "red", weight: 10, opacity:.30,
     }).addTo(map);
   });
 
 //Add trailheads to map from geoJSON
-var windIcon = L.icon({
-  iconUrl: 'https://theahostetler.github.io/studio-week4/images/windmill.png',
-  iconSize: [70,90]
-  
 var trailhead_points = $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Trailheads.geojson",function(data){
+  //Define Trailheads icon
+  var iconhiker = L.icon({
+    iconUrl:'https://theahostetler.github.io/GWLT-Webmap/Images/icon-hiker.png',
+    iconSize: [45,45]
+  });
+  //Display trailhead points with icon and popup
   L.geoJson(data,{
     pointToLayer: function(feature,latlng){
-	  var marker = L.marker(latlng);
+	  var marker = L.marker(latlng,{icon: iconhiker});
     marker.bindPopup('<b>Trailhead</b> <br/> Access to '+feature.properties.Trail+'<br/><br/><b>Address:</b><br/>'+feature.properties.REV_Address+'<br/>'+feature.properties.REV_City);
     return marker;
 
