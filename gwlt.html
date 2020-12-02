@@ -26,8 +26,8 @@
 
 <body>
   <div id="header">
-    <img src="https://theahostetler.github.io/GWLT-Webmap/images/logo_hike_worcester.jpg" alt=:"Hike Worcester Logo"></img>
-    <p class="title">Hike Worcester<p>
+    <a href="http://www.hikeworcester.com/"> <img style="width:150px;height:102px" src="http://www.hikeworcester.com/images/HikeWorcester_600x406_logo.png" alt=:"Hike Worcester Logo"></img></a>
+    <p class="title">INTERACTIVE TRAIL MAP<p>
   </div>
 
   <div id="sidebar">
@@ -36,64 +36,47 @@
       <div class="tabs">
         <ul>
           <li><a href="index-leaflet.html">Hiking Map</a></li>
-          <li><a class = "active" href="GWLT.html"> GWLT </a></li>
+          <li><a class = "active" href="GWLT.html"> The Land Trust </a></li>
           <li><a href="getinvolved.html">Get Involved</a></li>
         </ul>
       </div>
-      <div>
-        <p class="info-bin">
-
-        </p>
+      <div class="info-bin">
+        <h1>Welcome to the Hike Worcester Trail Map! </h1>
+          <h3>Use this map to explore the 11 trails in the Hike Worcester Challenge. Complete 10 of the 11 trails to earn your spot
+            on the "<a href='http://www.gwlt.org/hikeworcester/#hikeworcwinners'>Roll of Members</a>"! Beyond being eternally
+            enshrined in this honorable roll, you'll get to know these amazing wild spaces, right in our urban backyard </h3><hr>
+        <h2>Using This Map</h2>
+        <h4>
+          Trails and trailheads are displayed on the map at the right. Click on a trail or trailhead to display a popup with more information about each.
+          <br><br>Use the “+” and “-” in the top left hand corner of the map to zoom in and out of the map.
+          <br><br>Explore the area around the trails by clicking on the map and dragging your cursor around.
+        </h4> <hr>
+          <h2>The Challenge Trails</h2>
+          <h4><i>Click for a printable map</i></h4>
+          <a href="https://i0.wp.com/www.gwlt.org/wp-content/uploads/2020/05/6-God_s-Acre.png">God’s Acre and Tetasset Ridge</a>
+          <br><a href="https://i0.wp.com/www.gwlt.org/wp-content/uploads/2020/05/1-Asnebumskit.png">Asnebumskit</a>
+          <br><a href="http://www.gwlt.org/wp-content/uploads/2020/11/Challenge-2-Bovenzi.pdf">Bovenzi Conservation Area</a>
+          <br><a href="http://www.gwlt.org/wp-content/uploads/2020/11/Challenge-3-Cascades.pdf">Cascades</a>
+          <br><a href="https://i0.wp.com/www.gwlt.org/wp-content/uploads/2020/05/4-Crow-Hill.png">Crow Hill</a>
+          <br><a href="https://i0.wp.com/www.gwlt.org/wp-content/uploads/2020/05/5-East-Side-Trail.png">East Side Trail</a>
+          <br><a href="https://i0.wp.com/www.gwlt.org/wp-content/uploads/2020/05/7-Holbrook-Donker.png">Holbrook Forest to Donker Farm</a>
+          <br><a href="https://i2.wp.com/www.gwlt.org/wp-content/uploads/2020/05/8-Kettle-Brook.png">Kettle Brook</a>
+          <br><a href="https://i0.wp.com/www.gwlt.org/wp-content/uploads/2020/05/9-Nick_s-Woods.png">Nick’s Woods</a>
+          <br><a href="https://i0.wp.com/www.gwlt.org/wp-content/uploads/2020/05/10-Southwick.png">Southwick Pond</a>
+          <br><a href="https://i2.wp.com/www.gwlt.org/wp-content/uploads/2020/05/XX-Moreland-Woods.png">Moreland Woods</a>
+          <hr>
+          <h2>Have you Completed the Challenge?</h2>
+          <p>Submit your name  to the <a href='http://www.gwlt.org/hikeworcester/#hikeworcwinners'>Roll of Members</a><p>
+          <br><br>
       </div>
     </div>
   </div>
 
-  <div id="map"></div>
+  <div id="map" style="background-color:cornsilk">
+    <iframe style="width:100%; height:100%" src="http://www.gwlt.org/about-gwlt/"></iframe>
+  </div>
 
 <script>
-
-// initialize the map
-  var map = L.map('map').setView([42.264, -71.799], 13);
-
-// load a tile layer
-  L.tileLayer('https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=043e839ea61f489cb15e6981706e65f2', {
-    	attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 17,
-      minZoom: 9
-    }).addTo(map);
-
-// Add function to bind popups to each line features - idealy this would be run for each of these imports
-function onEachFeature(feature, layer) {
-        layer.bindPopup(feature.properties.name);
-    };
-
-
-// Add trails to map from geojson
-//Could not add data from folder, had to use URL. Not sure why.
-  var trails = $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Trails_11_10_20.geojson",function(data){
-    L.geoJson(data,{
-      onEachFeature: onEachFeature
-    }).addTo(map);
-  });
-
-//Add challenge routes to map from geoJSON
-  var challenge = $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Challenge_Routes.geojson",function(data){
-    L.geoJson(data,{
-      onEachFeature: onEachFeature
-    }).addTo(map);
-  });
-
-//Add trailheads to map from geoJSON
-var trailhead_points = $.getJSON("https://theahostetler.github.io/GWLT-Webmap/Data/Tetasset_Ridge_Trailheads.geojson",function(data){
-  L.geoJson(data,{
-    pointToLayer: function(feature,latlng){
-	  var marker = L.marker(latlng);
-    marker.bindPopup('<b>Trailhead</b> <br/> Access to '+feature.properties.Trail+'<br/><br/><b>Address:</b><br/>'+feature.properties.REV_Address+'<br/>'+feature.properties.REV_City);
-    return marker;
-
-    }
-  }).addTo(map);
-});
 
 </script>
 
