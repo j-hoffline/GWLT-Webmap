@@ -49,6 +49,8 @@ After downloading these data from OSM, the lines and related details were edited
 * Allow map to remember view when switching between windows
 * Allow side panel to be hidden
 * Link trail names to views on the map
+* Develop maintenance and training plan
+* Add other basemap options
 
 ## Further Reading
 If you’re interested in maps like this, checkout these cool web maps for inspiration:
