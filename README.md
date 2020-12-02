@@ -52,7 +52,7 @@ After downloading these data from OSM, the lines and related details were edited
 
 ## Further Reading
 If you’re interested in maps like this, checkout these cool web maps for inspiration:
-* [NPS AT Map] (https://nps.maps.arcgis.com/apps/webappviewer/index.html?id=6298c848ba2a490588b7f6d25453e4e0)
+* [NPS AT Map](https://nps.maps.arcgis.com/apps/webappviewer/index.html?id=6298c848ba2a490588b7f6d25453e4e0)
 * [Boulder Trail Map](https://maps.bouldercolorado.gov/osmp-trails/)
 * [New England Trail Map](https://newenglandtrail.org/interactive-map/)
 
