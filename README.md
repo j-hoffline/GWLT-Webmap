@@ -11,7 +11,7 @@ This web map has been developed in order to allow for a greater degree of virtua
 
 The Hike Worcester website does host a usable web map using a simple but effective google maps tool. This web map allows users to see the bounds of existing conservation land included in the program as well as points located either at the center of the conservation land or  selected location along its boundary. This map is nicely styled with a simple legend for the points (pins) and the boundaries (thick green line with lighter green fill). 
 
-### The Existing Hike Worcester Web Map
+### [The Existing Hike Worcester Web Map](http://www.hikeworcester.com/SystemMap/SystemMap.html)
 ![Existing Hike Worcester Web Map](/Images/Hike_Worcester_Map_Current.PNG)
 
 Users viewing the existing Hike Worcester Map can click on the points and polygons displayed on the map to bring up a sidebar with the name of the feature and a link to more information about the conservation area. The provided links take users away from the map to a separate webpage or hosted pdf document where they’ll find more details about the property and the trails contained within.
