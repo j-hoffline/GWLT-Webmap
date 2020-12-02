@@ -51,6 +51,7 @@ After downloading these data from OSM, the lines and related details were edited
 * Link trail names to views on the map
 * Develop maintenance and training plan
 * Add other basemap options
+* Instructions for contributing to and using the project
 
 ## Further Reading
 If you’re interested in maps like this, checkout these cool web maps for inspiration:
