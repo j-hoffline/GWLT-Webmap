@@ -1,0 +1,52 @@
+<meta charset="utf-8" />
+   <meta
+     name="viewport"
+     content="initial-scale=1,maximum-scale=1,user-scalable=no"
+   />
+   <title>GWLT Trails Explorer</title>
+
+   <style>
+     html,
+     body,
+     #viewDiv {
+       padding: 0;
+       margin: 0;
+       height: 100%;
+       width: 100%;
+     }
+   </style>
+
+   <link
+     rel="stylesheet"
+     href="https://js.arcgis.com/4.18/esri/themes/light/main.css"
+   />
+
+   <script src="https://js.arcgis.com/4.18/"></script>
+
+   <script>
+     require(["esri/views/MapView", "esri/WebMap"], function (
+       MapView,
+       WebMap
+     ) {
+
+       //Assign webmap ID to PortalItem
+       var webmap = new WebMap({
+         portalItem: {
+           // autocasts as new PortalItem()
+           id: "7259945a25254c7b91d207132434556d" //ID sliced from Webmap URL
+         }
+       });
+
+       // Set the WebMap instance to the map property in a MapView.
+       var view = new MapView({
+         map: webmap,
+         container: "viewDiv"
+       });
+     });
+   </script>
+ </head>
+
+ <body>
+   <div id="viewDiv"></div>
+ </body>
+</html>
