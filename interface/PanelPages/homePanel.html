@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../master.css">
+      <script type="text/javascript">
+          const loadLogo = function(e) {
+              let logo = document.getElementById("logo");
+              if (parent.window.innerWidth <= 850) {
+                  console.log("true");
+                  logo.style.height = "0";
+                  logo.style.width = "0";
+              } else {
+                  console.log("false");
+                  logo.style.height = "40vh";
+                  logo.style.width = "60vw";
+              }
+          }
+          parent.window.addEventListener('resize', loadLogo);
+          parent.window.addEventListener('load', loadLogo);
+      </script>
+  </head>
+  <body>
+    <div id="homePanel">
+      <div id="imageHeaderDiv">
+        <img id="logo" src="../images/gwltLogo.png" alt="Logo" />
+        <h2>Greater-Worcester <br />
+        Landtrust Map</h2>
+      </div>
+
+          <div class="linkDiv">
+            <img class="linkIcon" src="../images/iconmonstr-binoculars-7.png" alt="" />
+            <a class="link" href="./trailsPanel.html">Search Hiking Trails</a>
+          </div>
+          <div class="linkDiv">
+            <img class="linkIcon" src="../images/iconmonstr-globe-3.png" alt="" />
+            <a class="link" href="https://www.gwlt.org/" target="_blank">Visit Website</a>
+          </div>
+          <div class="linkDiv">
+            <img class="linkIcon" src="../images/iconmonstr-calendar-7.png" alt="" />
+            <a class="link" href="./challengesAndEventsPanel.html">Challenges & Events</a>
+          </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../master.css">
+    <script type="text/javascript" src="../js/panelLoadMessage.js"></script>
+    <script type="text/javascript" src="../js/displayTrailDetails.js" defer></script>
+    <title></title>
+    <script type="text/javascript">
+      function storeFeature(e) {
+        localStorage.setItem("feature", event.target.id);
+        console.log(event.target.id);
+      }
+    </script>
+  </head>
+  <body>
+  <div id="trailDetail">
+    <div class="titleDiv" style="white-space: nowrap;">
+      <img class="linkIcon panelIcon" src="../images/iconmonstr-hiker.png" alt="" />
+      <h1 class="panelTitle" id="trailName">Trail Name</h1>
+      <hr class="panelRule"/>
+    </div>
+
+    <h1 class="infoHeader">Quick Facts</h1>
+    <div class="infoSection">
+      <p class="info" id="quickFacts"></p>
+    </div>
+
+<div id="trailLinks">
+    <div class="linkDiv">
+      <img class="linkIcon" src="../images/iconmonstr-tree-19%201.png" alt="" />
+      <a class="link" id="landmark" href="./trailFeatureList.html" onclick="storeFeature(this)">Landmarks</a>
+    </div>
+    <div class="linkDiv">
+      <img class="linkIcon" src="../images/iconmonstr-tree-7%201.png" alt="" />
+      <a class="link" id="plantlife" href="./trailFeatureList.html" onclick="storeFeature(this)">Plant Life</a>
+    </div>
+    <div class="linkDiv">
+      <img class="linkIcon" src="../images/iconmonstr-cat-7%201.png" alt="" />
+      <a class="link" id="wildlife" href="./trailFeatureList.html" onclick="storeFeature(this)">Wildlife</a>
+    </div>
+</div>
+    <a class="link backLink" href="./trailsPanel.html">
+      <img src="../images/iconmonstr-arrow-black.png"
+      style="width: 20px; height: 20px;"
+      alt="<">
+      Back
+    </a>
+  </div>
+  </body>
+</html>
